@@ -39,24 +39,24 @@ export const PricingCard = ({
 
   return (
     <>
-      <div className="rounded-3xl p-8 ring-1 h-full w-full bg-white text-left">
-        <h3 className="text-lg font-semibold leading-8 text-secondary">
+      <div className="rounded-3xl p-8 ring-1 h-full w-full bg-white text-left transition-all duration-300 hover:bg-secondary group">
+        <h3 className="text-lg font-semibold leading-8 text-secondary group-hover:text-white">
           {name}
         </h3>
-        <p className="mt-4 text-sm leading-6 text-secondary/80">
+        <p className="mt-4 text-sm leading-6 text-secondary/80 group-hover:text-white/80">
           {description}
         </p>
         <p className="mt-6 flex items-baseline gap-x-1">
-          <span className="text-4xl font-bold tracking-tight text-secondary">
+          <span className="text-4xl font-bold tracking-tight text-secondary group-hover:text-white">
             {price}
           </span>
-          <span className="text-sm font-semibold leading-6 text-secondary/80">
+          <span className="text-sm font-semibold leading-6 text-secondary/80 group-hover:text-white/80">
             /month
           </span>
         </p>
         <Button
           variant="outline"
-          className="mt-6 w-full border-secondary text-secondary"
+          className="mt-6 w-full border-secondary text-secondary transition-colors group-hover:bg-transparent group-hover:border-white group-hover:text-white"
           onClick={() => setIsAuthOpen(true)}
         >
           Get started

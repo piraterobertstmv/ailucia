@@ -7,8 +7,8 @@ interface PricingFeatureProps {
 
 export const PricingFeature = ({ feature, isMiddleCard }: PricingFeatureProps) => {
   return (
-    <li className="flex gap-x-3 text-secondary">
-      <Check className="h-6 w-5 flex-none text-secondary" />
+    <li className="flex gap-x-3 text-secondary group-hover:text-white">
+      <Check className="h-6 w-5 flex-none text-secondary group-hover:text-white" />
       {feature}
     </li>
   );
