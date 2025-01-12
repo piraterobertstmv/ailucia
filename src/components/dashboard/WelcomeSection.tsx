@@ -6,7 +6,7 @@ export const WelcomeSection = () => {
       <img
         src="/lovable-uploads/6e388c46-639c-4af7-b65b-588cd7e2edf7.png"
         alt="Luc-ia AI Assistant"
-        className="w-64 h-64 object-cover rounded-lg shadow-lg"
+        className="w-64 h-64 object-cover rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
       />
       <div className="text-center flex-1">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
