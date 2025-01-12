@@ -55,11 +55,13 @@ export const Pricing = () => {
           {tiers.map((tier, index) => (
             <div
               key={tier.name}
-              className={`rounded-3xl p-8 ring-1 ring-gray-200 ${
-                index === 1
-                  ? "relative bg-gray-50 shadow-2xl sm:mx-8 sm:px-8"
-                  : ""
-              }`}
+              className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out
+                ${index === 1 
+                  ? "relative bg-gray-50 shadow-2xl sm:mx-8 sm:px-8 ring-secondary" 
+                  : "ring-gray-200 hover:ring-secondary hover:shadow-xl hover:scale-105"
+                }
+                group
+              `}
             >
               <h3 className="text-lg font-semibold leading-8 text-primary">
                 {tier.name}
@@ -77,8 +79,10 @@ export const Pricing = () => {
               </p>
               <Button
                 variant={index === 1 ? "default" : "outline"}
-                className={`mt-6 w-full ${
-                  index === 1 ? "bg-secondary hover:bg-secondary/90" : ""
+                className={`mt-6 w-full transition-colors duration-300 ${
+                  index === 1 
+                    ? "bg-secondary hover:bg-secondary/90" 
+                    : "group-hover:bg-secondary group-hover:text-white"
                 }`}
               >
                 Get started
@@ -89,7 +93,9 @@ export const Pricing = () => {
               >
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
-                    <Check className="h-6 w-5 flex-none text-secondary" />
+                    <Check className={`h-6 w-5 flex-none text-secondary transition-colors duration-300 ${
+                      index !== 1 ? "group-hover:text-secondary" : ""
+                    }`} />
                     {feature}
                   </li>
                 ))}
