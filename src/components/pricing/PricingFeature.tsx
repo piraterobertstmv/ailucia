@@ -10,15 +10,15 @@ export const PricingFeature = ({ feature, isMiddleCard }: PricingFeatureProps) =
     <li
       className={`flex gap-x-3 ${
         isMiddleCard
-          ? "text-white group-hover/pricing:text-gray-600"
-          : "text-gray-600 group-hover:text-white"
+          ? "text-white group-hover:text-gray-600 group-hover/pricing:text-white"
+          : "text-gray-600 group-hover:text-white group-hover/pricing:text-gray-600"
       }`}
     >
       <Check
         className={`h-6 w-5 flex-none ${
           isMiddleCard
-            ? "text-white group-hover/pricing:text-secondary"
-            : "text-secondary group-hover:text-white"
+            ? "text-white group-hover:text-secondary group-hover/pricing:text-white"
+            : "text-secondary group-hover:text-white group-hover/pricing:text-secondary"
         }`}
       />
       {feature}
