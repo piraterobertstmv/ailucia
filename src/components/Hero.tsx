@@ -1,4 +1,9 @@
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export const Hero = () => {
   return (
@@ -16,9 +21,22 @@ export const Hero = () => {
               <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">
                 Get Started Free
               </Button>
-              <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">
-                Watch Demo
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">
+                    Watch Demo
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[800px] p-0">
+                  <video 
+                    controls 
+                    className="w-full h-auto"
+                    src="/demo-video.mp4"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           <div className="relative animate-fade-up">
