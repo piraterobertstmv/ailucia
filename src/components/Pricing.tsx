@@ -18,7 +18,7 @@ const monthlyTiers = [
   },
   {
     name: "Professional",
-    price: "€399",
+    price: "€3,830.40",
     description: "For growing businesses",
     features: [
       "2,500 minutes included per month",
