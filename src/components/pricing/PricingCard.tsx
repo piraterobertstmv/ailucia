@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { PricingFeature } from "./PricingFeature";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { PricingHeader } from "./PricingHeader";
+import { PricingPrice } from "./PricingPrice";
+import { PricingFeatureList } from "./PricingFeatureList";
 
 interface PricingCardProps {
   name: string;
@@ -57,20 +56,8 @@ export const PricingCard = ({
 
   return (
     <div className="rounded-3xl p-8 ring-1 h-full w-full bg-white text-left transition-all duration-300 hover:bg-secondary group">
-      <h3 className="text-lg font-semibold leading-8 text-secondary group-hover:text-white">
-        {name}
-      </h3>
-      <p className="mt-4 text-sm leading-6 text-secondary/80 group-hover:text-white/80">
-        {description}
-      </p>
-      <p className="mt-6 flex items-baseline gap-x-1">
-        <span className="text-4xl font-bold tracking-tight text-secondary group-hover:text-white">
-          {price}
-        </span>
-        <span className="text-sm font-semibold leading-6 text-secondary/80 group-hover:text-white/80">
-          /{billingPeriod === "monthly" ? "month" : "year"}
-        </span>
-      </p>
+      <PricingHeader name={name} description={description} />
+      <PricingPrice price={price} billingPeriod={billingPeriod} />
       <Button
         variant="outline"
         className="mt-6 w-full border-secondary text-secondary transition-colors group-hover:bg-transparent group-hover:border-white group-hover:text-white"
@@ -79,15 +66,7 @@ export const PricingCard = ({
       >
         {isLoading ? "Processing..." : "Get started"}
       </Button>
-      <ul role="list" className="mt-8 space-y-3 text-sm leading-6">
-        {features.map((feature) => (
-          <PricingFeature
-            key={feature}
-            feature={feature}
-            isMiddleCard={isMiddleCard}
-          />
-        ))}
-      </ul>
+      <PricingFeatureList features={features} isMiddleCard={isMiddleCard} />
     </div>
   );
 };
