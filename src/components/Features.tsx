@@ -29,7 +29,7 @@ export const Features = () => {
   const featuresRef = useScrollAnimation();
 
   return (
-    <div className="py-16 sm:py-24 bg-gradient-to-b from-white via-secondary/5 to-accent/10">
+    <div className="py-12 sm:py-24 bg-gradient-to-b from-white via-secondary/5 to-accent/10">
       <div className="container mx-auto px-4">
         <div 
           ref={titleRef}
@@ -51,7 +51,7 @@ export const Features = () => {
         </div>
         <div 
           ref={featuresRef}
-          className="mx-auto mt-12 sm:mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none opacity-0 translate-y-10 transition-all duration-700"
+          className="mx-auto mt-8 sm:mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none opacity-0 translate-y-10 transition-all duration-700"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {features.map((feature, index) => (

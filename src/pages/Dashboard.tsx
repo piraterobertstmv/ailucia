@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto py-4 px-4">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div className="flex items-center gap-4">
           <Button
             onClick={() => navigate("/pricing")}

@@ -17,13 +17,13 @@ export const Hero = () => {
   const heroImageRef = useScrollAnimation();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-accent/5 to-secondary/5 py-16 sm:py-24">
+    <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-gradient-to-b from-white via-accent/5 to-secondary/5 py-8 sm:py-16">
       <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
           <div 
             ref={heroTextRef} 
-            className="flex flex-col justify-center text-center lg:text-left opacity-0 translate-y-10 transition-all duration-700"
+            className="flex flex-col justify-center text-center lg:text-left opacity-0 translate-y-10 transition-all duration-700 mt-16 sm:mt-0"
           >
             <div className="relative">
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#9b87f5] to-purple-500 opacity-20 blur-xl animate-pulse" />
@@ -70,7 +70,7 @@ export const Hero = () => {
           </div>
           <div 
             ref={heroImageRef}
-            className="relative mt-8 lg:mt-0 opacity-0 translate-y-10 transition-all duration-700"
+            className="relative mt-8 lg:mt-0 opacity-0 translate-y-10 transition-all duration-700 px-4 sm:px-0"
           >
             <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[#9b87f5] to-purple-500 blur-3xl opacity-20 animate-pulse"></div>
             <img
