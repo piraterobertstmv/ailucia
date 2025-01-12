@@ -50,9 +50,9 @@ export const Navbar = () => {
                 </Link>
                 <Button 
                   onClick={handleSignOut}
-                  className="bg-secondary hover:bg-secondary/90 transition-all duration-300 transform hover:scale-105"
+                  className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 text-white transition-all duration-300 transform hover:scale-105"
                 >
-                  Sign Out
+                  Log out
                 </Button>
               </>
             ) : (
@@ -67,7 +67,7 @@ export const Navbar = () => {
                 </Button>
                 <Button 
                   onClick={() => setIsSignUpOpen(true)}
-                  className="bg-secondary hover:bg-secondary/90 transition-all duration-300 transform hover:scale-105"
+                  className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 text-white transition-all duration-300 transform hover:scale-105"
                 >
                   Sign Up
                 </Button>
@@ -88,8 +88,8 @@ export const Navbar = () => {
               variables: {
                 default: {
                   colors: {
-                    brand: '#805AD5',
-                    brandAccent: '#6B46C1',
+                    brand: '#9b87f5',
+                    brandAccent: '#8b75f2',
                   },
                 },
               },
@@ -112,8 +112,8 @@ export const Navbar = () => {
               variables: {
                 default: {
                   colors: {
-                    brand: '#805AD5',
-                    brandAccent: '#6B46C1',
+                    brand: '#9b87f5',
+                    brandAccent: '#8b75f2',
                   },
                 },
               },
