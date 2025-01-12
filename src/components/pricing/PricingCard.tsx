@@ -30,11 +30,7 @@ export const PricingCard = ({
   const handleCheckout = () => {
     setIsLoading(true);
     try {
-      // Stripe link removed as requested
-      toast({
-        title: "Coming soon",
-        description: "This feature is not available yet.",
-      });
+      window.open('https://buy.stripe.com/bIY03XcXJ0Ty8GQ8wI', '_blank');
     } catch (error) {
       console.error('Error:', error);
       toast({
