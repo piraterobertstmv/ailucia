@@ -9,6 +9,79 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      business_profiles: {
+        Row: {
+          address: string | null
+          business_description: string | null
+          business_name: string | null
+          created_at: string
+          id: string
+          industry: string | null
+          phone: string | null
+          website: string | null
+        }
+        Insert: {
+          address?: string | null
+          business_description?: string | null
+          business_name?: string | null
+          created_at?: string
+          id: string
+          industry?: string | null
+          phone?: string | null
+          website?: string | null
+        }
+        Update: {
+          address?: string | null
+          business_description?: string | null
+          business_name?: string | null
+          created_at?: string
+          id?: string
+          industry?: string | null
+          phone?: string | null
+          website?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "business_profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      call_statistics: {
+        Row: {
+          call_date: string | null
+          calls_count: number | null
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          call_date?: string | null
+          calls_count?: number | null
+          created_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          call_date?: string | null
+          calls_count?: number | null
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "call_statistics_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string
