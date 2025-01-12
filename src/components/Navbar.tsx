@@ -50,7 +50,7 @@ export const Navbar = () => {
                 </Link>
                 <Button 
                   onClick={handleSignOut}
-                  className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 text-white transition-all duration-300 transform hover:scale-105"
+                  className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
                 >
                   Log out
                 </Button>
@@ -60,14 +60,13 @@ export const Navbar = () => {
                 <Button 
                   variant="ghost" 
                   onClick={() => setIsSignInOpen(true)}
-                  className="group relative"
+                  className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
                 >
                   Sign In
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
                 </Button>
                 <Button 
                   onClick={() => setIsSignUpOpen(true)}
-                  className="bg-[#9b87f5] hover:bg-[#9b87f5]/90 text-white transition-all duration-300 transform hover:scale-105"
+                  className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
                 >
                   Sign Up
                 </Button>

@@ -13,10 +13,10 @@ export const Hero = () => {
               Never miss a call, appointment, or important message again. luc-ia handles your phone calls, takes notes, and manages your schedule with AI precision.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
-              <Button className="bg-secondary hover:bg-secondary/90 text-white px-8 py-6 text-lg">
+              <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">
                 Get Started Free
               </Button>
-              <Button variant="outline" className="px-8 py-6 text-lg">
+              <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">
                 Watch Demo
               </Button>
             </div>
