@@ -21,7 +21,7 @@ const STRIPE_CHECKOUT_URLS = {
     yearly: "#"
   },
   "Professional": {
-    monthly: "#",
+    monthly: "https://buy.stripe.com/7sI03X1f159O4qAcMN",
     yearly: "#"
   },
   "Enterprise": {
