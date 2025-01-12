@@ -72,8 +72,16 @@ export const Pricing = () => {
               className="inline-flex"
             >
               <TabsList className="grid w-full max-w-[400px] grid-cols-2">
-                <TabsTrigger value="monthly">Monthly</TabsTrigger>
-                <TabsTrigger value="yearly">
+                <TabsTrigger 
+                  value="monthly" 
+                  className="data-[state=active]:bg-secondary data-[state=active]:text-white hover:bg-secondary/80 hover:text-white transition-colors"
+                >
+                  Monthly
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="yearly"
+                  className="data-[state=active]:bg-secondary data-[state=active]:text-white hover:bg-secondary/80 hover:text-white transition-colors"
+                >
                   Yearly <span className="ml-2 rounded-full bg-purple-100 px-2 py-1 text-xs font-medium text-purple-800">Save 20%</span>
                 </TabsTrigger>
               </TabsList>
