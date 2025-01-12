@@ -8,18 +8,10 @@ interface PricingFeatureProps {
 export const PricingFeature = ({ feature, isMiddleCard }: PricingFeatureProps) => {
   return (
     <li
-      className={`flex gap-x-3 ${
-        isMiddleCard
-          ? "text-white group-hover/pricing:text-gray-600"
-          : "text-gray-600 group-hover:text-white"
-      }`}
+      className={`flex gap-x-3 text-secondary group-hover/pricing:text-white`}
     >
       <Check
-        className={`h-6 w-5 flex-none ${
-          isMiddleCard
-            ? "text-white group-hover/pricing:text-secondary"
-            : "text-secondary group-hover:text-white"
-        }`}
+        className={`h-6 w-5 flex-none text-secondary group-hover/pricing:text-white`}
       />
       {feature}
     </li>
