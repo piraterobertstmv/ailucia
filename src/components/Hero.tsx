@@ -7,7 +7,7 @@ export const Hero = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col justify-center animate-fade-up">
             <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-6xl">
-              Meet Luc-ia, Your AI Secretary
+              Meet Luc<span className="text-[#9b87f5]">-ia</span>, Your AI Secretary
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Never miss a call, appointment, or important message again. Luc-ia handles your phone calls, takes notes, and manages your schedule with AI precision.
