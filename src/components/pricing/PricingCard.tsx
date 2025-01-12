@@ -43,8 +43,11 @@ export const PricingCard = ({
   const { toast } = useToast();
 
   const handleCheckout = () => {
+    setIsLoading(true);
     const checkoutUrl = STRIPE_CHECKOUT_URLS[name][billingPeriod];
+    
     if (checkoutUrl === "#") {
+      setIsLoading(false);
       toast({
         variant: "destructive",
         title: "Not Available",
@@ -52,7 +55,20 @@ export const PricingCard = ({
       });
       return;
     }
-    window.location.href = checkoutUrl;
+
+    try {
+      // Open in a new tab for better user experience
+      window.open(checkoutUrl, '_blank');
+    } catch (error) {
+      console.error('Error redirecting to checkout:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Could not redirect to checkout. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
