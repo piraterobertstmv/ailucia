@@ -25,7 +25,7 @@ export const Hero = () => {
             <img
               src="/lovable-uploads/57a44d07-5d6f-4ab0-ae7e-55513559485e.png"
               alt="AI Secretary Interface"
-              className="rounded-xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl"
+              className="rounded-xl shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-3xl"
             />
           </div>
         </div>
