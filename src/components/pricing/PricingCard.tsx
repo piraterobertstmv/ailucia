@@ -39,38 +39,27 @@ export const PricingCard = ({
 
   return (
     <>
-      <div
-        className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out h-full w-full bg-white hover:bg-secondary
-          ${isMiddleCard ? "ring-secondary" : "ring-gray-200"}`}
-      >
-        <h3
-          className={`text-lg font-semibold leading-8 text-secondary group-hover/pricing:text-white`}
-        >
+      <div className="rounded-3xl p-8 ring-1 h-full w-full bg-white">
+        <h3 className="text-lg font-semibold leading-8 text-secondary">
           {name}
         </h3>
-        <p
-          className={`mt-4 text-sm leading-6 text-secondary/80 group-hover/pricing:text-white/80`}
-        >
+        <p className="mt-4 text-sm leading-6 text-secondary/80">
           {description}
         </p>
         <p className="mt-6 flex items-baseline gap-x-1">
-          <span
-            className={`text-4xl font-bold tracking-tight text-secondary group-hover/pricing:text-white`}
-          >
+          <span className="text-4xl font-bold tracking-tight text-secondary">
             {price}
           </span>
-          <span
-            className={`text-sm font-semibold leading-6 text-secondary/80 group-hover/pricing:text-white/80`}
-          >
+          <span className="text-sm font-semibold leading-6 text-secondary/80">
             /month
           </span>
         </p>
         <Button
           variant={isMiddleCard ? "default" : "outline"}
-          className={`mt-6 w-full transition-colors duration-300 ${
+          className={`mt-6 w-full ${
             isMiddleCard
-              ? "bg-secondary text-white hover:bg-secondary/90"
-              : "border-secondary text-secondary hover:bg-secondary hover:text-white"
+              ? "bg-secondary text-white"
+              : "border-secondary text-secondary"
           }`}
           onClick={() => setIsAuthOpen(true)}
         >
