@@ -53,7 +53,10 @@ const monthlyTiers = [
 ];
 
 const calculateYearlyPrice = (monthlyPrice: string) => {
-  const numericPrice = parseFloat(monthlyPrice.replace('€', ''));
+  if (monthlyPrice === "€1,200") {
+    return "€13,200"; // Fixed yearly price for Enterprise plan
+  }
+  const numericPrice = parseFloat(monthlyPrice.replace('€', '').replace(',', ''));
   const yearlyPrice = (numericPrice * 12 * 0.9).toFixed(2); // 10% discount
   return `€${yearlyPrice}`;
 };

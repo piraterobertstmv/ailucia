@@ -26,7 +26,7 @@ const STRIPE_CHECKOUT_URLS = {
   },
   "Enterprise": {
     monthly: "https://buy.stripe.com/8wM1810aX59Oe1a4gi",
-    yearly: "#"
+    yearly: "https://buy.stripe.com/00g8At3n90Ty1eo6or"
   }
 };
 
