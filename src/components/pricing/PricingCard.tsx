@@ -18,7 +18,7 @@ interface PricingCardProps {
 const STRIPE_CHECKOUT_URLS = {
   "Starter": {
     monthly: "https://buy.stripe.com/14k03X7Dp45Kf5e6oo",
-    yearly: "#"
+    yearly: "https://buy.stripe.com/8wM1810aX59Oe1a4gi"
   },
   "Professional": {
     monthly: "https://buy.stripe.com/7sI03X1f159O4qAcMN",
