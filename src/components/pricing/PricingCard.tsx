@@ -30,10 +30,7 @@ export const PricingCard = ({
   const handleCheckout = () => {
     setIsLoading(true);
     try {
-      toast({
-        title: "Coming Soon",
-        description: "This feature is not available yet.",
-      });
+      window.open('https://buy.stripe.com/dR69Exe1NgSwcX6eV0', '_blank');
     } catch (error) {
       console.error('Error:', error);
       toast({
