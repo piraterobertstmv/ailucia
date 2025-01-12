@@ -21,11 +21,11 @@ export const Hero = () => {
               </Button>
             </div>
           </div>
-          <div className="relative animate-fade-up">
+          <div className="relative animate-fade-up group">
             <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+              src="/lovable-uploads/57a44d07-5d6f-4ab0-ae7e-55513559485e.png"
               alt="AI Secretary Interface"
-              className="rounded-xl shadow-2xl"
+              className="rounded-xl shadow-2xl transition-transform duration-300 group-hover:scale-105"
             />
           </div>
         </div>
