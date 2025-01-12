@@ -1,4 +1,5 @@
 import { Phone, Calendar, MessageSquare, Clock } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const features = [
   {
@@ -24,31 +25,40 @@ const features = [
 ];
 
 export const Features = () => {
+  const titleRef = useScrollAnimation();
+  const featuresRef = useScrollAnimation();
+
   return (
     <div className="py-24 sm:py-32 bg-gradient-to-b from-white via-secondary/5 to-accent/10">
       <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-2xl lg:text-center">
+        <div 
+          ref={titleRef}
+          className="mx-auto max-w-2xl lg:text-center opacity-0 translate-y-10 transition-all duration-700"
+        >
           <div className="relative inline-block">
             <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#9b87f5] to-purple-500 opacity-20 blur-xl animate-pulse" />
-            <h2 className="relative text-base font-semibold leading-7 text-secondary animate-fade-up">
+            <h2 className="relative text-base font-semibold leading-7 text-secondary">
               Powerful Features
             </h2>
           </div>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl animate-fade-up delay-100">
+          <p className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
             Everything you need to run your business smoothly
           </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600 animate-fade-up delay-200">
+          <p className="mt-6 text-lg leading-8 text-gray-600">
             luc-ia combines advanced AI with traditional secretary skills to provide
             a comprehensive business support solution.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <div 
+          ref={featuresRef}
+          className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none opacity-0 translate-y-10 transition-all duration-700"
+        >
           <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
             {features.map((feature, index) => (
               <div 
                 key={feature.name} 
-                className="flex flex-col items-start animate-fade-up group hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${(index + 4) * 100}ms` }}
+                className="flex flex-col items-start group hover:scale-105 transition-all duration-300"
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="relative">
                   <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#9b87f5] to-purple-500 opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-20" />

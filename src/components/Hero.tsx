@@ -9,16 +9,22 @@ import { useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { supabase } from "@/integrations/supabase/client";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Hero = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const heroTextRef = useScrollAnimation();
+  const heroImageRef = useScrollAnimation();
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-accent/5 to-secondary/5 py-24 sm:py-32">
       <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
-          <div className="flex flex-col justify-center animate-fade-up">
+          <div 
+            ref={heroTextRef} 
+            className="flex flex-col justify-center opacity-0 translate-y-10 transition-all duration-700"
+          >
             <div className="relative">
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#9b87f5] to-purple-500 opacity-20 blur-xl animate-pulse" />
               <h1 className="relative text-4xl font-bold tracking-tight text-primary sm:text-6xl">
@@ -61,7 +67,10 @@ export const Hero = () => {
               </Button>
             </div>
           </div>
-          <div className="relative animate-fade-up">
+          <div 
+            ref={heroImageRef}
+            className="relative opacity-0 translate-y-10 transition-all duration-700"
+          >
             <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[#9b87f5] to-purple-500 blur-3xl opacity-20 animate-pulse"></div>
             <img
               src="/lovable-uploads/57a44d07-5d6f-4ab0-ae7e-55513559485e.png"
