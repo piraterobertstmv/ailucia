@@ -32,7 +32,7 @@ export const Hero = () => {
                     controls 
                     autoPlay
                     className="w-full h-auto"
-                    src="/demo-video.mp4"
+                    src="/Luc-ia.mp4"
                     preload="auto"
                   >
                     Your browser does not support the video tag.
