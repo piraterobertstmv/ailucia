@@ -51,36 +51,44 @@ export const Pricing = () => {
             Choose the perfect plan for your business needs
           </p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-6 sm:mt-20 lg:max-w-4xl lg:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-6 sm:mt-20 lg:max-w-4xl lg:grid-cols-3 group/pricing">
           {tiers.map((tier, index) => (
             <div
               key={tier.name}
               className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out h-full
                 ${index === 1 
-                  ? "relative bg-secondary sm:mx-8 sm:px-8 ring-white shadow-2xl" 
+                  ? "relative bg-secondary sm:mx-8 sm:px-8 ring-white shadow-2xl group-hover/pricing:bg-white group-hover/pricing:ring-gray-200" 
                   : "ring-gray-200 hover:bg-secondary hover:shadow-xl hover:scale-105"
                 }
                 group
               `}
             >
               <h3 className={`text-lg font-semibold leading-8 ${
-                index === 1 ? "text-white" : "text-primary group-hover:text-white"
+                index === 1 
+                  ? "text-white group-hover/pricing:text-primary" 
+                  : "text-primary group-hover:text-white"
               }`}>
                 {tier.name}
               </h3>
               <p className={`mt-4 text-sm leading-6 ${
-                index === 1 ? "text-white/80" : "text-gray-600 group-hover:text-white/80"
+                index === 1 
+                  ? "text-white/80 group-hover/pricing:text-gray-600" 
+                  : "text-gray-600 group-hover:text-white/80"
               }`}>
                 {tier.description}
               </p>
               <p className="mt-6 flex items-baseline gap-x-1">
                 <span className={`text-4xl font-bold tracking-tight ${
-                  index === 1 ? "text-white" : "text-primary group-hover:text-white"
+                  index === 1 
+                    ? "text-white group-hover/pricing:text-primary" 
+                    : "text-primary group-hover:text-white"
                 }`}>
                   {tier.price}
                 </span>
                 <span className={`text-sm font-semibold leading-6 ${
-                  index === 1 ? "text-white/80" : "text-gray-600 group-hover:text-white/80"
+                  index === 1 
+                    ? "text-white/80 group-hover/pricing:text-gray-600" 
+                    : "text-gray-600 group-hover:text-white/80"
                 }`}>
                   /month
                 </span>
@@ -89,7 +97,7 @@ export const Pricing = () => {
                 variant={index === 1 ? "default" : "outline"}
                 className={`mt-6 w-full transition-colors duration-300 ${
                   index === 1 
-                    ? "bg-white text-secondary hover:bg-white/90" 
+                    ? "bg-white text-secondary hover:bg-white/90 group-hover/pricing:bg-transparent group-hover/pricing:text-primary group-hover/pricing:border-gray-200" 
                     : "group-hover:bg-white group-hover:text-secondary border-gray-200"
                 }`}
               >
@@ -101,10 +109,14 @@ export const Pricing = () => {
               >
                 {tier.features.map((feature) => (
                   <li key={feature} className={`flex gap-x-3 ${
-                    index === 1 ? "text-white" : "text-gray-600 group-hover:text-white"
+                    index === 1 
+                      ? "text-white group-hover/pricing:text-gray-600" 
+                      : "text-gray-600 group-hover:text-white"
                   }`}>
                     <Check className={`h-6 w-5 flex-none ${
-                      index === 1 ? "text-white" : "text-secondary group-hover:text-white"
+                      index === 1 
+                        ? "text-white group-hover/pricing:text-secondary" 
+                        : "text-secondary group-hover:text-white"
                     }`} />
                     {feature}
                   </li>
