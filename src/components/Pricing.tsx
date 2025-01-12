@@ -74,7 +74,7 @@ export const Pricing = () => {
               <TabsList className="grid w-full max-w-[400px] grid-cols-2">
                 <TabsTrigger value="monthly">Monthly</TabsTrigger>
                 <TabsTrigger value="yearly">
-                  Yearly <span className="ml-2 rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">Save 20%</span>
+                  Yearly <span className="ml-2 rounded-full bg-purple-100 px-2 py-1 text-xs font-medium text-purple-800">Save 20%</span>
                 </TabsTrigger>
               </TabsList>
             </Tabs>
