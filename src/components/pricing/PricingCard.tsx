@@ -30,7 +30,7 @@ export const PricingCard = ({
   const handleCheckout = () => {
     setIsLoading(true);
     try {
-      window.open('https://buy.stripe.com/dR69Exe1NgSwcX6eV0', '_blank');
+      window.open('https://buy.stripe.com/9AQ1810aX45K2is7sA', '_blank');
     } catch (error) {
       console.error('Error:', error);
       toast({
