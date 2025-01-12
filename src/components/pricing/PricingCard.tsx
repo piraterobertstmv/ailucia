@@ -21,7 +21,7 @@ export const PricingCard = ({
       className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out h-full w-full hover:scale-105 hover:shadow-xl
         ${
           isMiddleCard
-            ? "bg-secondary ring-white"
+            ? "bg-secondary ring-white hover:bg-white hover:ring-gray-200"
             : "ring-gray-200 hover:bg-secondary"
         }
         group
@@ -30,7 +30,7 @@ export const PricingCard = ({
       <h3
         className={`text-lg font-semibold leading-8 ${
           isMiddleCard
-            ? "text-white"
+            ? "text-white group-hover:text-primary"
             : "text-primary group-hover:text-white"
         }`}
       >
@@ -39,7 +39,7 @@ export const PricingCard = ({
       <p
         className={`mt-4 text-sm leading-6 ${
           isMiddleCard
-            ? "text-white/80"
+            ? "text-white/80 group-hover:text-gray-600"
             : "text-gray-600 group-hover:text-white/80"
         }`}
       >
@@ -49,7 +49,7 @@ export const PricingCard = ({
         <span
           className={`text-4xl font-bold tracking-tight ${
             isMiddleCard
-              ? "text-white"
+              ? "text-white group-hover:text-primary"
               : "text-primary group-hover:text-white"
           }`}
         >
@@ -58,7 +58,7 @@ export const PricingCard = ({
         <span
           className={`text-sm font-semibold leading-6 ${
             isMiddleCard
-              ? "text-white/80"
+              ? "text-white/80 group-hover:text-gray-600"
               : "text-gray-600 group-hover:text-white/80"
           }`}
         >
@@ -69,7 +69,7 @@ export const PricingCard = ({
         variant={isMiddleCard ? "default" : "outline"}
         className={`mt-6 w-full transition-colors duration-300 ${
           isMiddleCard
-            ? "bg-white text-secondary hover:bg-white/90"
+            ? "bg-white text-secondary hover:bg-white/90 group-hover:bg-secondary group-hover:text-white"
             : "group-hover:bg-white group-hover:text-secondary border-gray-200"
         }`}
       >
