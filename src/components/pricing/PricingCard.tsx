@@ -15,18 +15,18 @@ interface PricingCardProps {
   billingPeriod: "monthly" | "yearly";
 }
 
-const PRICE_IDS = {
+const STRIPE_CHECKOUT_URLS = {
   "Starter": {
-    monthly: "price_1OyLxKHDp45Kf5e6Oo0QXZN",
-    yearly: "price_YOUR_STARTER_YEARLY_PRICE_ID"
+    monthly: "https://buy.stripe.com/14k03X7Dp45Kf5e6oo",
+    yearly: "#"
   },
   "Professional": {
-    monthly: "price_YOUR_PRO_MONTHLY_PRICE_ID",
-    yearly: "price_YOUR_PRO_YEARLY_PRICE_ID"
+    monthly: "#",
+    yearly: "#"
   },
   "Enterprise": {
-    monthly: "price_YOUR_ENTERPRISE_MONTHLY_PRICE_ID",
-    yearly: "price_YOUR_ENTERPRISE_YEARLY_PRICE_ID"
+    monthly: "#",
+    yearly: "#"
   }
 };
 
@@ -42,35 +42,17 @@ export const PricingCard = ({
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleCheckout = async () => {
-    try {
-      setIsLoading(true);
-      const priceId = PRICE_IDS[name][billingPeriod];
-      
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        navigate('/');
-        return;
-      }
-
-      const { data, error } = await supabase.functions.invoke('create-checkout-session', {
-        body: { priceId, billingPeriod }
-      });
-
-      if (error) throw error;
-      if (data?.url) {
-        window.location.href = data.url;
-      }
-    } catch (error) {
-      console.error('Error during checkout:', error);
+  const handleCheckout = () => {
+    const checkoutUrl = STRIPE_CHECKOUT_URLS[name][billingPeriod];
+    if (checkoutUrl === "#") {
       toast({
         variant: "destructive",
-        title: "Error",
-        description: "There was a problem initiating checkout. Please try again.",
+        title: "Not Available",
+        description: "This plan is not available yet. Please try another plan.",
       });
-    } finally {
-      setIsLoading(false);
+      return;
     }
+    window.location.href = checkoutUrl;
   };
 
   return (
