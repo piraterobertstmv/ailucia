@@ -56,6 +56,7 @@ export const Navbar = () => {
             }}
             view="sign_in"
             theme="light"
+            providers={[]}
           />
         </DialogContent>
       </Dialog>
@@ -78,6 +79,7 @@ export const Navbar = () => {
             }}
             view="sign_up"
             theme="light"
+            providers={[]}
           />
         </DialogContent>
       </Dialog>
