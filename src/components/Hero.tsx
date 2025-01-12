@@ -73,8 +73,8 @@ export const Hero = () => {
           >
             <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[#9b87f5] to-purple-500 blur-3xl opacity-20 animate-pulse"></div>
             <img
-              src="/lovable-uploads/57a44d07-5d6f-4ab0-ae7e-55513559485e.png"
-              alt="AI Secretary Interface"
+              src="/lovable-uploads/329ecd80-d9d3-4003-9f69-808f16af67ae.png"
+              alt="Luc-ia AI Assistant"
               className="relative w-full rounded-xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(155,135,245,0.2)]"
             />
           </div>
