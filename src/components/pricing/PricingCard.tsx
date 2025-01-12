@@ -32,6 +32,8 @@ export const PricingCard = ({
     try {
       if (name === "Starter" && billingPeriod === "monthly") {
         window.open('https://buy.stripe.com/dR69Exe1NgSwcX6eV0', '_blank');
+      } else if (name === "Professional" && billingPeriod === "monthly") {
+        window.open('https://buy.stripe.com/9AQ1810aX45K2is7sA', '_blank');
       } else {
         toast({
           title: "Coming soon",
