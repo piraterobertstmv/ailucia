@@ -15,21 +15,6 @@ interface PricingCardProps {
   billingPeriod: "monthly" | "yearly";
 }
 
-const STRIPE_CHECKOUT_URLS = {
-  "Starter": {
-    monthly: "https://buy.stripe.com/14k03X7Dp45Kf5e6oo",
-    yearly: "https://buy.stripe.com/14k8At5vhbyc5uE005"
-  },
-  "Professional": {
-    monthly: "https://buy.stripe.com/7sI03X1f159O4qAcMN",
-    yearly: "https://buy.stripe.com/dR6aIB9Lx9q4cX68wD"
-  },
-  "Enterprise": {
-    monthly: "https://buy.stripe.com/8wM1810aX59Oe1a4gi",
-    yearly: "https://buy.stripe.com/00g8At3n90Ty1eo6or"
-  }
-};
-
 export const PricingCard = ({
   name,
   price,
@@ -44,27 +29,17 @@ export const PricingCard = ({
 
   const handleCheckout = () => {
     setIsLoading(true);
-    const checkoutUrl = STRIPE_CHECKOUT_URLS[name][billingPeriod];
-    
-    if (checkoutUrl === "#") {
-      setIsLoading(false);
-      toast({
-        variant: "destructive",
-        title: "Not Available",
-        description: "This plan is not available yet. Please try another plan.",
-      });
-      return;
-    }
-
     try {
-      // Open in a new tab for better user experience
-      window.open(checkoutUrl, '_blank');
+      toast({
+        title: "Coming Soon",
+        description: "This feature is not available yet.",
+      });
     } catch (error) {
-      console.error('Error redirecting to checkout:', error);
+      console.error('Error:', error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Could not redirect to checkout. Please try again.",
+        description: "An error occurred. Please try again.",
       });
     } finally {
       setIsLoading(false);
