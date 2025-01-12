@@ -1,9 +1,11 @@
 import { PricingCard } from "./pricing/PricingCard";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 
-const tiers = [
+const monthlyTiers = [
   {
     name: "Starter",
-    price: "$29",
+    price: "€49.99",
     description: "Perfect for small businesses",
     features: [
       "50 calls per month",
@@ -14,7 +16,7 @@ const tiers = [
   },
   {
     name: "Professional",
-    price: "$99",
+    price: "€99.99",
     description: "For growing businesses",
     features: [
       "200 calls per month",
@@ -26,7 +28,7 @@ const tiers = [
   },
   {
     name: "Enterprise",
-    price: "Custom",
+    price: "€199.99",
     description: "For large organizations",
     features: [
       "Unlimited calls",
@@ -38,7 +40,20 @@ const tiers = [
   },
 ];
 
+const calculateYearlyPrice = (monthlyPrice: string) => {
+  const numericPrice = parseFloat(monthlyPrice.replace('€', ''));
+  const yearlyPrice = (numericPrice * 12 * 0.8).toFixed(2); // 20% discount
+  return `€${yearlyPrice}`;
+};
+
 export const Pricing = () => {
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
+
+  const currentTiers = monthlyTiers.map(tier => ({
+    ...tier,
+    price: billingPeriod === "monthly" ? tier.price : calculateYearlyPrice(tier.price),
+  }));
+
   return (
     <div className="py-16 sm:py-24">
       <div className="container mx-auto px-4">
@@ -49,9 +64,24 @@ export const Pricing = () => {
           <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
             Choose the perfect plan for your business needs
           </p>
+          <div className="mt-8">
+            <Tabs
+              defaultValue="monthly"
+              value={billingPeriod}
+              onValueChange={(value) => setBillingPeriod(value as "monthly" | "yearly")}
+              className="inline-flex"
+            >
+              <TabsList className="grid w-full max-w-[400px] grid-cols-2">
+                <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                <TabsTrigger value="yearly">
+                  Yearly <span className="ml-2 rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">Save 20%</span>
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
         </div>
         <div className="mx-auto mt-12 sm:mt-16 grid max-w-lg grid-cols-1 items-stretch gap-6 sm:gap-8 lg:max-w-4xl lg:grid-cols-3 group/pricing">
-          {tiers.map((tier, index) => (
+          {currentTiers.map((tier, index) => (
             <div key={tier.name} className="h-full w-full">
               <PricingCard
                 name={tier.name}
@@ -59,6 +89,7 @@ export const Pricing = () => {
                 description={tier.description}
                 features={tier.features}
                 isMiddleCard={index === 1}
+                billingPeriod={billingPeriod}
               />
             </div>
           ))}

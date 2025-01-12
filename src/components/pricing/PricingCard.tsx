@@ -14,6 +14,7 @@ interface PricingCardProps {
   description: string;
   features: string[];
   isMiddleCard: boolean;
+  billingPeriod: "monthly" | "yearly";
 }
 
 export const PricingCard = ({
@@ -22,6 +23,7 @@ export const PricingCard = ({
   description,
   features,
   isMiddleCard,
+  billingPeriod,
 }: PricingCardProps) => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const navigate = useNavigate();
@@ -51,7 +53,7 @@ export const PricingCard = ({
             {price}
           </span>
           <span className="text-sm font-semibold leading-6 text-secondary/80 group-hover:text-white/80">
-            /month
+            /{billingPeriod === "monthly" ? "month" : "year"}
           </span>
         </p>
         <Button
