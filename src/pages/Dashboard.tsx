@@ -6,8 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Form,
@@ -17,6 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { CallStatistics } from "@/components/dashboard/CallStatistics";
 
 type BusinessProfileFormValues = {
   business_name: string;
@@ -31,8 +30,6 @@ const Dashboard = () => {
   const session = useSession();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [businessProfile, setBusinessProfile] = useState<any>(null);
-  const [callStats, setCallStats] = useState<any[]>([]);
   const form = useForm<BusinessProfileFormValues>();
 
   useEffect(() => {
@@ -41,7 +38,6 @@ const Dashboard = () => {
       return;
     }
     fetchBusinessProfile();
-    fetchCallStats();
   }, [session]);
 
   const fetchBusinessProfile = async () => {
@@ -63,7 +59,6 @@ const Dashboard = () => {
       }
 
       if (!data) {
-        // Initialize business profile if it doesn't exist
         const { error: insertError } = await supabase
           .from("business_profiles")
           .insert([{ id: session?.user.id }]);
@@ -78,7 +73,6 @@ const Dashboard = () => {
           return;
         }
 
-        setBusinessProfile({});
         form.reset({
           business_name: "",
           business_description: "",
@@ -88,7 +82,6 @@ const Dashboard = () => {
           address: "",
         });
       } else {
-        setBusinessProfile(data);
         form.reset(data);
       }
     } catch (error) {
@@ -101,22 +94,10 @@ const Dashboard = () => {
     }
   };
 
-  const fetchCallStats = async () => {
-    const { data, error } = await supabase
-      .from("call_statistics")
-      .select("*")
-      .eq("user_id", session?.user.id)
-      .order("call_date", { ascending: true });
-
-    if (!error && data) {
-      setCallStats(data);
-    }
-  };
-
   const onSubmit = async (values: BusinessProfileFormValues) => {
     const updates = {
       id: session?.user.id,
-      ...values
+      ...values,
     };
 
     const { error } = await supabase
@@ -145,7 +126,9 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="space-y-8">
+        <CallStatistics />
+        
         <Card>
           <CardHeader>
             <CardTitle>Business Profile</CardTitle>
@@ -236,23 +219,6 @@ const Dashboard = () => {
                 </Button>
               </form>
             </Form>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Call Statistics</CardTitle>
-          </CardHeader>
-          <CardContent className="h-[400px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={callStats}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="call_date" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="calls_count" fill="#805AD5" />
-              </BarChart>
-            </ResponsiveContainer>
           </CardContent>
         </Card>
       </div>

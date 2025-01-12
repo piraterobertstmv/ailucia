@@ -18,6 +18,8 @@ export type Database = {
           id: string
           industry: string | null
           phone: string | null
+          plan_call_limit: number | null
+          plan_type: string | null
           website: string | null
         }
         Insert: {
@@ -28,6 +30,8 @@ export type Database = {
           id: string
           industry?: string | null
           phone?: string | null
+          plan_call_limit?: number | null
+          plan_type?: string | null
           website?: string | null
         }
         Update: {
@@ -38,6 +42,8 @@ export type Database = {
           id?: string
           industry?: string | null
           phone?: string | null
+          plan_call_limit?: number | null
+          plan_type?: string | null
           website?: string | null
         }
         Relationships: [
