@@ -36,7 +36,7 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="text-xl font-bold text-primary">
-              luc-ia
+              Luc-ia
             </Link>
           </div>
           <div className="flex items-center gap-4">

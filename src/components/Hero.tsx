@@ -7,10 +7,10 @@ export const Hero = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col justify-center animate-fade-up">
             <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-6xl">
-              Meet luc-ia, Your AI Secretary
+              Meet Luc-ia, Your AI Secretary
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Never miss a call, appointment, or important message again. luc-ia handles your phone calls, takes notes, and manages your schedule with AI precision.
+              Never miss a call, appointment, or important message again. Luc-ia handles your phone calls, takes notes, and manages your schedule with AI precision.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
               <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">

@@ -28,7 +28,7 @@ export const AuthenticatedContent = () => {
         <TransformationSection />
         
         <div className="mt-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">What luc-ia Can Handle</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">What Luc-ia Can Handle</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureList title="Call Management" items={callManagementItems} />
             <FeatureList title="Business Operations" items={businessOperationsItems} />
