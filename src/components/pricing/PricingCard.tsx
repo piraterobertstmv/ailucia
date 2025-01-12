@@ -18,19 +18,20 @@ export const PricingCard = ({
 }: PricingCardProps) => {
   return (
     <div
-      className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out h-full w-full
+      className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out h-full w-full hover:scale-105 hover:shadow-xl
         ${
           isMiddleCard
             ? "bg-secondary ring-white"
             : "ring-gray-200 hover:bg-secondary"
         }
+        group
       `}
     >
       <h3
         className={`text-lg font-semibold leading-8 ${
           isMiddleCard
             ? "text-white"
-            : "text-primary hover:text-white"
+            : "text-primary group-hover:text-white"
         }`}
       >
         {name}
@@ -39,7 +40,7 @@ export const PricingCard = ({
         className={`mt-4 text-sm leading-6 ${
           isMiddleCard
             ? "text-white/80"
-            : "text-gray-600 hover:text-white/80"
+            : "text-gray-600 group-hover:text-white/80"
         }`}
       >
         {description}
@@ -49,7 +50,7 @@ export const PricingCard = ({
           className={`text-4xl font-bold tracking-tight ${
             isMiddleCard
               ? "text-white"
-              : "text-primary hover:text-white"
+              : "text-primary group-hover:text-white"
           }`}
         >
           {price}
@@ -58,7 +59,7 @@ export const PricingCard = ({
           className={`text-sm font-semibold leading-6 ${
             isMiddleCard
               ? "text-white/80"
-              : "text-gray-600 hover:text-white/80"
+              : "text-gray-600 group-hover:text-white/80"
           }`}
         >
           /month
@@ -69,7 +70,7 @@ export const PricingCard = ({
         className={`mt-6 w-full transition-colors duration-300 ${
           isMiddleCard
             ? "bg-white text-secondary hover:bg-white/90"
-            : "hover:bg-white hover:text-secondary border-gray-200"
+            : "group-hover:bg-white group-hover:text-secondary border-gray-200"
         }`}
       >
         Get started
