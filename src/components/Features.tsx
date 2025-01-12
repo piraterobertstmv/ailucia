@@ -29,7 +29,7 @@ export const Features = () => {
   const featuresRef = useScrollAnimation();
 
   return (
-    <div className="py-24 sm:py-32 bg-gradient-to-b from-white via-secondary/5 to-accent/10">
+    <div className="py-16 sm:py-24 bg-gradient-to-b from-white via-secondary/5 to-accent/10">
       <div className="container mx-auto px-4">
         <div 
           ref={titleRef}
@@ -41,23 +41,23 @@ export const Features = () => {
               Powerful Features
             </h2>
           </div>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
+          <p className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-primary sm:text-4xl">
             Everything you need to run your business smoothly
           </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
             luc-ia combines advanced AI with traditional secretary skills to provide
             a comprehensive business support solution.
           </p>
         </div>
         <div 
           ref={featuresRef}
-          className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none opacity-0 translate-y-10 transition-all duration-700"
+          className="mx-auto mt-12 sm:mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none opacity-0 translate-y-10 transition-all duration-700"
         >
-          <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <div 
                 key={feature.name} 
-                className="flex flex-col items-start group hover:scale-105 transition-all duration-300"
+                className="flex flex-col items-start group hover:scale-105 transition-all duration-300 p-4"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="relative">
