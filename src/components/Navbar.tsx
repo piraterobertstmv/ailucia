@@ -40,6 +40,12 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="flex items-center gap-4">
+            <Link to="/pricing">
+              <Button variant="ghost" className="group relative">
+                Pricing
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+              </Button>
+            </Link>
             {session ? (
               <>
                 <Link to="/dashboard">
