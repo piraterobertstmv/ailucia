@@ -34,6 +34,8 @@ export const PricingCard = ({
         window.open('https://buy.stripe.com/dR69Exe1NgSwcX6eV0', '_blank');
       } else if (name === "Professional" && billingPeriod === "monthly") {
         window.open('https://buy.stripe.com/9AQ1810aX45K2is7sA', '_blank');
+      } else if (name === "Enterprise" && billingPeriod === "monthly") {
+        window.open('https://buy.stripe.com/7sI8At3n99q49KU7sB', '_blank');
       } else {
         toast({
           title: "Coming soon",
