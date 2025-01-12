@@ -5,8 +5,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useState } from "react";
+import { Auth } from "@supabase/auth-ui-react";
+import { supabase } from "@/integrations/supabase/client";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 
 export const Hero = () => {
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-accent/5 to-secondary/5 py-24 sm:py-32">
       <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
@@ -23,9 +29,33 @@ export const Hero = () => {
               Never miss a call, appointment, or important message again. Luc-ia handles your phone calls, takes notes, and manages your schedule with AI precision.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
-              <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(155,135,245,0.3)]">
-                Get Started Free
-              </Button>
+              <Dialog open={isSignUpOpen} onOpenChange={setIsSignUpOpen}>
+                <DialogTrigger asChild>
+                  <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(155,135,245,0.3)]">
+                    Get Started Free
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogTitle>Sign Up</DialogTitle>
+                  <Auth
+                    supabaseClient={supabase}
+                    appearance={{
+                      theme: ThemeSupa,
+                      variables: {
+                        default: {
+                          colors: {
+                            brand: '#9b87f5',
+                            brandAccent: '#8b75f2',
+                          },
+                        },
+                      },
+                    }}
+                    view="sign_up"
+                    theme="light"
+                    providers={[]}
+                  />
+                </DialogContent>
+              </Dialog>
               <Dialog>
                 <DialogTrigger asChild>
                   <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(155,135,245,0.3)]">
