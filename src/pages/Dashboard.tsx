@@ -37,10 +37,10 @@ const Dashboard = () => {
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-4">
           <Button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/pricing")}
             className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
           >
-            Back to Home
+            Back to Pricing
           </Button>
         </div>
         {businessProfile && (
