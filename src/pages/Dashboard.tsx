@@ -8,6 +8,24 @@ import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+type BusinessProfileFormValues = {
+  business_name: string;
+  business_description: string;
+  industry: string;
+  website: string;
+  phone: string;
+  address: string;
+};
 
 const Dashboard = () => {
   const session = useSession();
@@ -15,6 +33,7 @@ const Dashboard = () => {
   const { toast } = useToast();
   const [businessProfile, setBusinessProfile] = useState<any>(null);
   const [callStats, setCallStats] = useState<any[]>([]);
+  const form = useForm<BusinessProfileFormValues>();
 
   useEffect(() => {
     if (!session) {
@@ -34,6 +53,7 @@ const Dashboard = () => {
 
     if (!error && data) {
       setBusinessProfile(data);
+      form.reset(data);
     }
   };
 
@@ -49,17 +69,10 @@ const Dashboard = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+  const onSubmit = async (values: BusinessProfileFormValues) => {
     const updates = {
       id: session?.user.id,
-      business_name: formData.get("business_name"),
-      business_description: formData.get("business_description"),
-      industry: formData.get("industry"),
-      website: formData.get("website"),
-      phone: formData.get("phone"),
-      address: formData.get("address"),
+      ...values
     };
 
     const { error } = await supabase
@@ -90,71 +103,91 @@ const Dashboard = () => {
             <CardTitle>Business Profile</CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="business_name" className="text-sm font-medium">
-                  Business Name
-                </label>
-                <Input
-                  id="business_name"
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
                   name="business_name"
-                  defaultValue={businessProfile?.business_name || ""}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Business Name</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div>
-                <label htmlFor="business_description" className="text-sm font-medium">
-                  Business Description
-                </label>
-                <Input
-                  id="business_description"
+                <FormField
+                  control={form.control}
                   name="business_description"
-                  defaultValue={businessProfile?.business_description || ""}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Business Description</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div>
-                <label htmlFor="industry" className="text-sm font-medium">
-                  Industry
-                </label>
-                <Input
-                  id="industry"
+                <FormField
+                  control={form.control}
                   name="industry"
-                  defaultValue={businessProfile?.industry || ""}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Industry</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div>
-                <label htmlFor="website" className="text-sm font-medium">
-                  Website
-                </label>
-                <Input
-                  id="website"
+                <FormField
+                  control={form.control}
                   name="website"
-                  defaultValue={businessProfile?.website || ""}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Website</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div>
-                <label htmlFor="phone" className="text-sm font-medium">
-                  Phone
-                </label>
-                <Input
-                  id="phone"
+                <FormField
+                  control={form.control}
                   name="phone"
-                  defaultValue={businessProfile?.phone || ""}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div>
-                <label htmlFor="address" className="text-sm font-medium">
-                  Address
-                </label>
-                <Input
-                  id="address"
+                <FormField
+                  control={form.control}
                   name="address"
-                  defaultValue={businessProfile?.address || ""}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Address</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <Button type="submit" className="w-full">
-                Save Changes
-              </Button>
-            </form>
+                <Button type="submit" className="w-full">
+                  Save Changes
+                </Button>
+              </form>
+            </Form>
           </CardContent>
         </Card>
 
