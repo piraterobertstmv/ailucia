@@ -38,6 +38,8 @@ export const PricingCard = ({
         window.open('https://buy.stripe.com/7sI8At3n99q49KU7sB', '_blank');
       } else if (name === "Starter" && billingPeriod === "yearly") {
         window.open('https://buy.stripe.com/7sI8At4rd31G4qAfZ8', '_blank');
+      } else if (name === "Professional" && billingPeriod === "yearly") {
+        window.open('https://buy.stripe.com/aEU5oh0aX45K2is14f', '_blank');
       } else {
         toast({
           title: "Coming soon",
