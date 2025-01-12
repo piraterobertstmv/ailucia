@@ -51,29 +51,37 @@ export const Pricing = () => {
             Choose the perfect plan for your business needs
           </p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-3">
+        <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-6 sm:mt-20 lg:max-w-4xl lg:grid-cols-3">
           {tiers.map((tier, index) => (
             <div
               key={tier.name}
-              className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out
+              className={`rounded-3xl p-8 ring-1 transition-all duration-300 ease-in-out h-full
                 ${index === 1 
-                  ? "relative bg-gray-50 shadow-2xl sm:mx-8 sm:px-8 ring-secondary" 
-                  : "ring-gray-200 hover:ring-secondary hover:shadow-xl hover:scale-105"
+                  ? "relative bg-secondary sm:mx-8 sm:px-8 ring-white shadow-2xl" 
+                  : "ring-gray-200 hover:bg-secondary hover:shadow-xl hover:scale-105"
                 }
                 group
               `}
             >
-              <h3 className="text-lg font-semibold leading-8 text-primary">
+              <h3 className={`text-lg font-semibold leading-8 ${
+                index === 1 ? "text-white" : "text-primary group-hover:text-white"
+              }`}>
                 {tier.name}
               </h3>
-              <p className="mt-4 text-sm leading-6 text-gray-600">
+              <p className={`mt-4 text-sm leading-6 ${
+                index === 1 ? "text-white/80" : "text-gray-600 group-hover:text-white/80"
+              }`}>
                 {tier.description}
               </p>
               <p className="mt-6 flex items-baseline gap-x-1">
-                <span className="text-4xl font-bold tracking-tight text-primary">
+                <span className={`text-4xl font-bold tracking-tight ${
+                  index === 1 ? "text-white" : "text-primary group-hover:text-white"
+                }`}>
                   {tier.price}
                 </span>
-                <span className="text-sm font-semibold leading-6 text-gray-600">
+                <span className={`text-sm font-semibold leading-6 ${
+                  index === 1 ? "text-white/80" : "text-gray-600 group-hover:text-white/80"
+                }`}>
                   /month
                 </span>
               </p>
@@ -81,20 +89,22 @@ export const Pricing = () => {
                 variant={index === 1 ? "default" : "outline"}
                 className={`mt-6 w-full transition-colors duration-300 ${
                   index === 1 
-                    ? "bg-secondary hover:bg-secondary/90" 
-                    : "group-hover:bg-secondary group-hover:text-white"
+                    ? "bg-white text-secondary hover:bg-white/90" 
+                    : "group-hover:bg-white group-hover:text-secondary border-gray-200"
                 }`}
               >
                 Get started
               </Button>
               <ul
                 role="list"
-                className="mt-8 space-y-3 text-sm leading-6 text-gray-600"
+                className="mt-8 space-y-3 text-sm leading-6"
               >
                 {tier.features.map((feature) => (
-                  <li key={feature} className="flex gap-x-3">
-                    <Check className={`h-6 w-5 flex-none text-secondary transition-colors duration-300 ${
-                      index !== 1 ? "group-hover:text-secondary" : ""
+                  <li key={feature} className={`flex gap-x-3 ${
+                    index === 1 ? "text-white" : "text-gray-600 group-hover:text-white"
+                  }`}>
+                    <Check className={`h-6 w-5 flex-none ${
+                      index === 1 ? "text-white" : "text-secondary group-hover:text-white"
                     }`} />
                     {feature}
                   </li>
