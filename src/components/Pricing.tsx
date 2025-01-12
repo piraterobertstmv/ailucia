@@ -57,7 +57,7 @@ const calculateYearlyPrice = (monthlyPrice: string) => {
     return "€13,200"; // Fixed yearly price for Enterprise plan
   }
   const numericPrice = parseFloat(monthlyPrice.replace('€', '').replace(',', ''));
-  const yearlyPrice = (numericPrice * 12 * 0.9).toFixed(2); // 10% discount
+  const yearlyPrice = (numericPrice * 12 * 0.8).toFixed(2); // 20% discount
   return `€${yearlyPrice}`;
 };
 
