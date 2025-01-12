@@ -30,8 +30,10 @@ export const Hero = () => {
                 <DialogContent className="sm:max-w-[800px] p-0">
                   <video 
                     controls 
+                    autoPlay
                     className="w-full h-auto"
                     src="/demo-video.mp4"
+                    preload="auto"
                   >
                     Your browser does not support the video tag.
                   </video>
