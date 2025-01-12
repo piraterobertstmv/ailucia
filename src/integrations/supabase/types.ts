@@ -20,6 +20,7 @@ export type Database = {
           phone: string | null
           plan_call_limit: number | null
           plan_type: string | null
+          updated_at: string | null
           website: string | null
         }
         Insert: {
@@ -32,6 +33,7 @@ export type Database = {
           phone?: string | null
           plan_call_limit?: number | null
           plan_type?: string | null
+          updated_at?: string | null
           website?: string | null
         }
         Update: {
@@ -44,6 +46,7 @@ export type Database = {
           phone?: string | null
           plan_call_limit?: number | null
           plan_type?: string | null
+          updated_at?: string | null
           website?: string | null
         }
         Relationships: [

@@ -34,21 +34,27 @@ export const BusinessProfileForm = () => {
   const form = useForm<BusinessProfileFormValues>();
 
   const onSubmit = async (values: BusinessProfileFormValues) => {
+    if (!session?.user.id) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "You must be logged in to update your profile",
+      });
+      return;
+    }
+
     // Filter out empty values to only update filled fields
     const filledValues = Object.fromEntries(
       Object.entries(values).filter(([_, value]) => value !== "")
     );
 
-    const updates = {
-      id: session?.user.id,
-      ...filledValues,
-      updated_at: new Date().toISOString(),
-    };
-
     const { error } = await supabase
       .from("business_profiles")
-      .upsert(updates)
-      .eq("id", session?.user.id);
+      .upsert({
+        id: session.user.id,
+        ...filledValues,
+      })
+      .eq("id", session.user.id);
 
     if (error) {
       console.error("Error updating profile:", error);
