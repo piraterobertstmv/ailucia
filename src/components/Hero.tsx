@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
@@ -27,16 +28,19 @@ export const Hero = () => {
                     Watch Demo
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[800px] p-0">
-                  <video 
-                    controls 
-                    autoPlay
-                    className="w-full h-auto"
-                    src="/Luc-ia.mp4"
-                    preload="auto"
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                <DialogContent className="sm:max-w-[800px] max-h-[90vh] p-0">
+                  <DialogTitle className="sr-only">Demo Video</DialogTitle>
+                  <div className="relative w-full aspect-video">
+                    <video 
+                      controls 
+                      autoPlay
+                      className="absolute inset-0 w-full h-full"
+                      src="/Luc-ia.mp4"
+                      preload="auto"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </DialogContent>
               </Dialog>
             </div>
