@@ -48,7 +48,7 @@ export const AuthenticatedContent = () => {
                   "Emergency call handling protocols",
                   "Multi-language support",
                 ].map((item, index) => (
-                  <li key={index} className="flex items-start p-2 rounded-md transition-colors duration-300 hover:bg-[#9b87f5]/5">
+                  <li key={index} className="flex items-start p-2 rounded-md transition-all duration-300 hover:bg-[#9b87f5]/5 hover:scale-105">
                     <Check className="h-5 w-5 text-[#9b87f5] mr-2 mt-1" />
                     <span className="text-gray-600">{item}</span>
                   </li>
@@ -66,7 +66,7 @@ export const AuthenticatedContent = () => {
                   "Basic customer service inquiries",
                   "Follow-up reminders and coordination",
                 ].map((item, index) => (
-                  <li key={index} className="flex items-start p-2 rounded-md transition-colors duration-300 hover:bg-[#9b87f5]/5">
+                  <li key={index} className="flex items-start p-2 rounded-md transition-all duration-300 hover:bg-[#9b87f5]/5 hover:scale-105">
                     <Check className="h-5 w-5 text-[#9b87f5] mr-2 mt-1" />
                     <span className="text-gray-600">{item}</span>
                   </li>
