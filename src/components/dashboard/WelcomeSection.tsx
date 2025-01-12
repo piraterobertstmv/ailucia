@@ -4,7 +4,7 @@ export const WelcomeSection = () => {
   return (
     <div className="flex items-center gap-8 mb-16">
       <img
-        src="/lovable-uploads/88cc5b7f-56f0-498d-8613-8276b53a4b49.png"
+        src="/lovable-uploads/6e388c46-639c-4af7-b65b-588cd7e2edf7.png"
         alt="Luc-ia AI Assistant"
         className="w-64 h-64 object-cover rounded-lg shadow-lg"
       />
