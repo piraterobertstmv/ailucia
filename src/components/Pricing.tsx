@@ -51,27 +51,6 @@ const monthlyTiers = [
   },
 ];
 
-const yearlyExtraPerks = {
-  starter: [
-    "Extended email support response time (24h)",
-    "Basic API access",
-    "Monthly usage reports",
-  ],
-  professional: [
-    "Additional 500 minutes per month",
-    "Quarterly business review",
-    "Custom integration setup assistance",
-    "Advanced API access",
-  ],
-  enterprise: [
-    "Additional 1,000 minutes per month",
-    "Monthly strategy sessions",
-    "Custom feature development priority",
-    "Dedicated technical account manager",
-    "24/7 premium support",
-  ],
-};
-
 const calculateYearlyPrice = (monthlyPrice: string) => {
   if (monthlyPrice === "€1,200") {
     return "€13,200"; // Fixed yearly price for Enterprise plan
@@ -84,17 +63,9 @@ const calculateYearlyPrice = (monthlyPrice: string) => {
 export const Pricing = () => {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
 
-  const currentTiers = monthlyTiers.map((tier, index) => ({
+  const currentTiers = monthlyTiers.map(tier => ({
     ...tier,
     price: billingPeriod === "monthly" ? tier.price : calculateYearlyPrice(tier.price),
-    features: billingPeriod === "monthly" 
-      ? tier.features 
-      : [
-          ...tier.features,
-          ...(index === 0 ? yearlyExtraPerks.starter : 
-             index === 1 ? yearlyExtraPerks.professional : 
-             yearlyExtraPerks.enterprise)
-        ],
   }));
 
   return (
