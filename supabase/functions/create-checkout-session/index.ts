@@ -15,18 +15,13 @@ serve(async (req) => {
 
   try {
     const { priceId, billingPeriod } = await req.json()
+    console.log('Received request with priceId:', priceId, 'and billingPeriod:', billingPeriod)
 
     // Get the stripe secret key from environment variables
     const stripeSecretKey = Deno.env.get('STRIPE_SECRET_KEY')
     if (!stripeSecretKey) {
       console.error('STRIPE_SECRET_KEY is not set in environment variables')
-      return new Response(
-        JSON.stringify({ error: 'Stripe secret key is not configured' }),
-        { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 500,
-        }
-      )
+      throw new Error('Stripe secret key is not configured')
     }
 
     const supabaseClient = createClient(
@@ -37,12 +32,11 @@ serve(async (req) => {
     // Get the session or user object
     const authHeader = req.headers.get('Authorization')!
     const token = authHeader.replace('Bearer ', '')
-    const { data } = await supabaseClient.auth.getUser(token)
-    const user = data.user
-    const email = user?.email
-
-    if (!email) {
-      throw new Error('No email found')
+    const { data: { user }, error: userError } = await supabaseClient.auth.getUser(token)
+    
+    if (userError || !user?.email) {
+      console.error('Error getting user:', userError)
+      throw new Error('Authentication required')
     }
 
     console.log('Creating Stripe instance with secret key...')
@@ -51,7 +45,7 @@ serve(async (req) => {
     })
 
     const customers = await stripe.customers.list({
-      email: email,
+      email: user.email,
       limit: 1
     })
 
@@ -63,7 +57,7 @@ serve(async (req) => {
     console.log('Creating payment session...')
     const session = await stripe.checkout.sessions.create({
       customer: customer_id,
-      customer_email: customer_id ? undefined : email,
+      customer_email: customer_id ? undefined : user.email,
       line_items: [
         {
           price: priceId,
