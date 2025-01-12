@@ -39,7 +39,7 @@ export const PricingCard = ({
 
   return (
     <>
-      <div className="rounded-3xl p-8 ring-1 h-full w-full bg-white">
+      <div className="rounded-3xl p-8 ring-1 h-full w-full bg-white text-left">
         <h3 className="text-lg font-semibold leading-8 text-secondary">
           {name}
         </h3>
@@ -55,12 +55,8 @@ export const PricingCard = ({
           </span>
         </p>
         <Button
-          variant={isMiddleCard ? "default" : "outline"}
-          className={`mt-6 w-full ${
-            isMiddleCard
-              ? "bg-secondary text-white"
-              : "border-secondary text-secondary"
-          }`}
+          variant="outline"
+          className="mt-6 w-full border-secondary text-secondary"
           onClick={() => setIsAuthOpen(true)}
         >
           Get started
