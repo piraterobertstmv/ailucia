@@ -4,7 +4,7 @@ import { useSession } from "@supabase/auth-helpers-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useState } from "react";
@@ -45,15 +45,59 @@ const Dashboard = () => {
   }, [session]);
 
   const fetchBusinessProfile = async () => {
-    const { data, error } = await supabase
-      .from("business_profiles")
-      .select("*")
-      .eq("id", session?.user.id)
-      .single();
+    try {
+      const { data, error } = await supabase
+        .from("business_profiles")
+        .select("*")
+        .eq("id", session?.user.id)
+        .maybeSingle();
 
-    if (!error && data) {
-      setBusinessProfile(data);
-      form.reset(data);
+      if (error) {
+        console.error("Error fetching business profile:", error);
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Failed to fetch business profile",
+        });
+        return;
+      }
+
+      if (!data) {
+        // Initialize business profile if it doesn't exist
+        const { error: insertError } = await supabase
+          .from("business_profiles")
+          .insert([{ id: session?.user.id }]);
+
+        if (insertError) {
+          console.error("Error creating business profile:", insertError);
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: "Failed to create business profile",
+          });
+          return;
+        }
+
+        setBusinessProfile({});
+        form.reset({
+          business_name: "",
+          business_description: "",
+          industry: "",
+          website: "",
+          phone: "",
+          address: "",
+        });
+      } else {
+        setBusinessProfile(data);
+        form.reset(data);
+      }
+    } catch (error) {
+      console.error("Error in fetchBusinessProfile:", error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "An unexpected error occurred",
+      });
     }
   };
 
