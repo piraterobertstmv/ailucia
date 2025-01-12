@@ -5,44 +5,56 @@ import { useState } from "react";
 const monthlyTiers = [
   {
     name: "Starter",
-    price: "€49.99",
+    price: "€59",
     description: "Perfect for small businesses",
     features: [
-      "50 calls per month",
-      "Basic appointment scheduling",
-      "Email notifications",
-      "24/7 availability",
+      "100 minutes included",
+      "Up to 10 concurrent calls",
+      "Unlimited assistants",
+      "Basic integrations (Zapier, HubSpot)",
+      "Access to Synthflow Academy",
+      "Standard Email Support",
+      "€0.30/minute overage",
     ],
   },
   {
     name: "Professional",
-    price: "€99.99",
+    price: "€399",
     description: "For growing businesses",
     features: [
-      "200 calls per month",
-      "Advanced scheduling",
-      "SMS notifications",
-      "Priority support",
-      "Custom greeting",
+      "2,500 minutes included",
+      "Up to 25 concurrent calls",
+      "Subaccounts",
+      "Multilanguage support",
+      "Advanced integrations",
+      "Batch campaigns",
+      "Real-Time Booking & SMS",
+      "Private Slack Channel (40-day)",
+      "High Priority Support",
+      "€0.25/minute overage",
     ],
   },
   {
     name: "Enterprise",
-    price: "€199.99",
+    price: "€1,200",
     description: "For large organizations",
     features: [
-      "Unlimited calls",
-      "Full integration suite",
+      "6,000 minutes included",
+      "Unlimited concurrent calls",
+      "Custom white-label platform",
       "Dedicated account manager",
-      "Custom AI training",
-      "Analytics dashboard",
+      "All advanced integrations",
+      "Early release features",
+      "White-glove onboarding",
+      "Priority support",
+      "€0.20/minute overage",
     ],
   },
 ];
 
 const calculateYearlyPrice = (monthlyPrice: string) => {
   const numericPrice = parseFloat(monthlyPrice.replace('€', ''));
-  const yearlyPrice = (numericPrice * 12 * 0.8).toFixed(2); // 20% discount
+  const yearlyPrice = (numericPrice * 12 * 0.9).toFixed(2); // 10% discount
   return `€${yearlyPrice}`;
 };
 
