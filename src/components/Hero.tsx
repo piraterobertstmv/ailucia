@@ -8,7 +8,8 @@ import {
 
 export const Hero = () => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-white to-accent/10 py-24 sm:py-32">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-accent/5 to-secondary/5 py-24 sm:py-32">
+      <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="flex flex-col justify-center animate-fade-up">
@@ -19,12 +20,12 @@ export const Hero = () => {
               Never miss a call, appointment, or important message again. Luc-ia handles your phone calls, takes notes, and manages your schedule with AI precision.
             </p>
             <div className="mt-10 flex items-center gap-x-6">
-              <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">
+              <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors hover:scale-105 transform duration-200">
                 Get Started Free
               </Button>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors">
+                  <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-colors hover:scale-105 transform duration-200">
                     Watch Demo
                   </Button>
                 </DialogTrigger>
@@ -46,10 +47,11 @@ export const Hero = () => {
             </div>
           </div>
           <div className="relative animate-fade-up">
+            <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[#9b87f5] to-secondary blur-2xl opacity-20 animate-pulse"></div>
             <img
               src="/lovable-uploads/57a44d07-5d6f-4ab0-ae7e-55513559485e.png"
               alt="AI Secretary Interface"
-              className="rounded-xl shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-3xl"
+              className="relative rounded-xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl"
             />
           </div>
         </div>

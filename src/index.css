@@ -88,6 +88,12 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .bg-grid-black {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgb(0 0 0 / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.1) 1px, transparent 1px);
+  }
 }
 
 @layer base {
