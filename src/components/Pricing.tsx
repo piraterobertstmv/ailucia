@@ -8,11 +8,10 @@ const monthlyTiers = [
     price: "€59",
     description: "Perfect for small businesses",
     features: [
-      "100 minutes included",
+      "100 minutes included per month",
       "Up to 10 concurrent calls",
       "Unlimited assistants",
       "Basic integrations (Zapier, HubSpot)",
-      "Access to Synthflow Academy",
       "Standard Email Support",
       "€0.30/minute overage",
     ],
@@ -22,7 +21,7 @@ const monthlyTiers = [
     price: "€399",
     description: "For growing businesses",
     features: [
-      "2,500 minutes included",
+      "2,500 minutes included per month",
       "Up to 25 concurrent calls",
       "Subaccounts",
       "Multilanguage support",
@@ -39,7 +38,7 @@ const monthlyTiers = [
     price: "€1,200",
     description: "For large organizations",
     features: [
-      "6,000 minutes included",
+      "6,000 minutes included per month",
       "Unlimited concurrent calls",
       "Custom white-label platform",
       "Dedicated account manager",
