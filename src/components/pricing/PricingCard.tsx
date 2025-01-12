@@ -30,7 +30,10 @@ export const PricingCard = ({
   const handleCheckout = () => {
     setIsLoading(true);
     try {
-      window.open('https://buy.stripe.com/aEU5oh0aX45K2is14f', '_blank');
+      toast({
+        title: "Coming soon",
+        description: "Our subscription system is currently under development. Please check back later.",
+      });
     } catch (error) {
       console.error('Error:', error);
       toast({
