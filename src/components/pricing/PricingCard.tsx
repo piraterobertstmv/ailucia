@@ -17,7 +17,7 @@ interface PricingCardProps {
 
 const PRICE_IDS = {
   "Starter": {
-    monthly: "price_YOUR_STARTER_MONTHLY_PRICE_ID",
+    monthly: "price_1OyLxKHDp45Kf5e6Oo0QXZN",
     yearly: "price_YOUR_STARTER_YEARLY_PRICE_ID"
   },
   "Professional": {
