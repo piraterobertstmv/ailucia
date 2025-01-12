@@ -2,23 +2,10 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useEffect, useRef } from "react";
 
 export const Hero = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.addEventListener('error', (e) => {
-        console.error('Error loading video:', e);
-      });
-    }
-  }, []);
-
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-white to-accent/10 py-24 sm:py-32">
       <div className="container mx-auto px-4">
@@ -40,21 +27,16 @@ export const Hero = () => {
                     Watch Demo
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[800px] max-h-[90vh] p-0">
-                  <DialogTitle className="sr-only">Demo Video</DialogTitle>
-                  <div className="relative w-full aspect-video">
-                    <video 
-                      ref={videoRef}
-                      controls 
-                      autoPlay
-                      className="absolute inset-0 w-full h-full"
-                      src="/Luc-ia.mp4"
-                      preload="auto"
-                      onError={(e) => console.error('Video error:', e)}
-                    >
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
+                <DialogContent className="sm:max-w-[800px] p-0">
+                  <video 
+                    controls 
+                    autoPlay
+                    className="w-full h-auto"
+                    src="/Luc-ia.mp4"
+                    preload="auto"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
                 </DialogContent>
               </Dialog>
             </div>
