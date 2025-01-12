@@ -56,27 +56,9 @@ export const Hero = () => {
                   />
                 </DialogContent>
               </Dialog>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(155,135,245,0.3)]">
-                    Watch Demo
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[800px] max-h-[90vh] p-0">
-                  <DialogTitle className="sr-only">Demo Video</DialogTitle>
-                  <div className="relative w-full aspect-video">
-                    <video 
-                      controls 
-                      autoPlay
-                      className="absolute inset-0 w-full h-full"
-                      src="/Luc-ia.mp4"
-                      preload="auto"
-                    >
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </DialogContent>
-              </Dialog>
+              <Button className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(155,135,245,0.3)]">
+                Watch Demo
+              </Button>
             </div>
           </div>
           <div className="relative animate-fade-up">
