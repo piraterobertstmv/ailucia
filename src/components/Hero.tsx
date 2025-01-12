@@ -27,9 +27,10 @@ export const Hero = () => {
           >
             <div className="relative">
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#9b87f5] to-purple-500 opacity-20 blur-xl animate-pulse" />
-              <h1 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary font-orbitron">
-                Meet <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] to-purple-500">Luc-ia</span>, Your AI Secretary
-              </h1>
+              <div className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary font-orbitron">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#9b87f5] to-purple-500">Luc-ia</span>
+                <h1 className="mt-2">Your AI Secretary</h1>
+              </div>
             </div>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
               Never miss a call, appointment, or important message again. Luc-ia handles your phone calls, takes notes, and manages your schedule with AI precision.
