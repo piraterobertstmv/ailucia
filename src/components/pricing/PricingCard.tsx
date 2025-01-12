@@ -30,10 +30,14 @@ export const PricingCard = ({
   const handleCheckout = () => {
     setIsLoading(true);
     try {
-      toast({
-        title: "Coming soon",
-        description: "Our subscription system is currently under development. Please check back later.",
-      });
+      if (name === "Starter" && billingPeriod === "monthly") {
+        window.open('https://buy.stripe.com/dR69Exe1NgSwcX6eV0', '_blank');
+      } else {
+        toast({
+          title: "Coming soon",
+          description: "Our subscription system is currently under development. Please check back later.",
+        });
+      }
     } catch (error) {
       console.error('Error:', error);
       toast({
