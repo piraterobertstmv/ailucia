@@ -42,6 +42,7 @@ export const CallUsageCard = () => {
   const totalCalls = callStats?.reduce((sum, stat) => sum + (stat.calls_count || 0), 0) || 0;
   const planLimit = businessProfile?.plan_call_limit || 100;
   const usagePercentage = (totalCalls / planLimit) * 100;
+  const remainingCalls = planLimit - totalCalls;
 
   return (
     <Card>
@@ -53,15 +54,27 @@ export const CallUsageCard = () => {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">
-              {totalCalls} / {planLimit} calls used
-            </span>
-            <span className="text-sm text-muted-foreground">
-              {usagePercentage.toFixed(1)}%
-            </span>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">
+                {totalCalls.toLocaleString()} / {planLimit.toLocaleString()} calls used
+              </span>
+              <span className="text-sm text-muted-foreground">
+                {usagePercentage.toFixed(1)}%
+              </span>
+            </div>
+            <Progress value={usagePercentage} className="h-2" />
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-muted-foreground">
+                Remaining calls: {remainingCalls.toLocaleString()}
+              </span>
+              {usagePercentage >= 80 && (
+                <span className="text-destructive">
+                  {usagePercentage >= 100 ? "Limit reached" : "Near limit"}
+                </span>
+              )}
+            </div>
           </div>
-          <Progress value={usagePercentage} className="h-2" />
         </div>
       </CardContent>
     </Card>
