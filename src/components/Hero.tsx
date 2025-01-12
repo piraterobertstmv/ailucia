@@ -35,7 +35,7 @@ export const Hero = () => {
                       controls 
                       autoPlay
                       className="absolute inset-0 w-full h-full"
-                      src="/Lovable.mp4"
+                      src="/Luc-ia.mp4"
                       preload="auto"
                     >
                       Your browser does not support the video tag.
