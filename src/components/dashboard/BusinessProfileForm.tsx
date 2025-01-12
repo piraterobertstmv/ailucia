@@ -34,9 +34,15 @@ export const BusinessProfileForm = () => {
   const form = useForm<BusinessProfileFormValues>();
 
   const onSubmit = async (values: BusinessProfileFormValues) => {
+    // Filter out empty values to only update filled fields
+    const filledValues = Object.fromEntries(
+      Object.entries(values).filter(([_, value]) => value !== "")
+    );
+
     const updates = {
       id: session?.user.id,
-      ...values,
+      ...filledValues,
+      updated_at: new Date().toISOString(),
     };
 
     const { error } = await supabase
@@ -45,6 +51,7 @@ export const BusinessProfileForm = () => {
       .eq("id", session?.user.id);
 
     if (error) {
+      console.error("Error updating profile:", error);
       toast({
         variant: "destructive",
         title: "Error",
@@ -144,7 +151,10 @@ export const BusinessProfileForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
+            <Button 
+              type="submit" 
+              className="w-full bg-[#9b87f5] hover:bg-[#9b87f5]/90"
+            >
               Save Changes
             </Button>
           </form>
