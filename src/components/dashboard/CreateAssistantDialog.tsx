@@ -1,4 +1,4 @@
-import { ArrowLeft, Plus, Sparkle } from "lucide-react";
+import { ArrowLeft, ArrowDown, ArrowUp, MessageSquare, Plus, Sparkle, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -11,8 +11,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+type Step = "initial" | "preset" | "type";
+
 export const CreateAssistantDialog = () => {
-  const [step, setStep] = useState<"initial" | "preset">("initial");
+  const [step, setStep] = useState<Step>("initial");
   const navigate = useNavigate();
 
   const initialOptions = [
@@ -20,9 +22,7 @@ export const CreateAssistantDialog = () => {
       icon: <Plus className="w-8 h-8 text-gray-600" />,
       title: "Start from scratch",
       description: "Build your AI Assistant from the ground up",
-      onClick: () => {
-        navigate("/assistants");
-      },
+      onClick: () => setStep("type"),
       className: "border-dashed border-2",
     },
     {
@@ -31,6 +31,27 @@ export const CreateAssistantDialog = () => {
       description: "Use presets to streamline setup & adjust settings",
       onClick: () => setStep("preset"),
       className: "bg-purple-50",
+    },
+  ];
+
+  const assistantTypes = [
+    {
+      icon: <ArrowUp className="w-8 h-8" />,
+      title: "Outbound",
+      description: "Automate calls within workflows using Zapier, REST API, or HighLevel",
+      onClick: () => navigate("/assistants"),
+    },
+    {
+      icon: <ArrowDown className="w-8 h-8" />,
+      title: "Inbound",
+      description: "Manage incoming calls via phone, Zapier, REST API, or HighLevel",
+      onClick: () => navigate("/assistants"),
+    },
+    {
+      icon: <MessageSquare className="w-8 h-8" />,
+      title: "Widget",
+      description: "Create a widget and easily embed it anywhere in your app",
+      onClick: () => navigate("/assistants"),
     },
   ];
 
@@ -61,6 +82,43 @@ export const CreateAssistantDialog = () => {
         <p className="text-gray-600">
           Welcome and assist visitors with ease. Luc-ia handles all inbound communication.
         </p>
+      </div>
+    </div>
+  );
+
+  const typeContent = (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <button
+          onClick={() => setStep("initial")}
+          className="flex items-center text-gray-600 hover:text-gray-800"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2" />
+          Back
+        </button>
+        <DialogClose className="text-gray-500 hover:text-gray-700">
+          <X className="w-5 h-5" />
+        </DialogClose>
+      </div>
+      <h2 className="text-2xl font-semibold">Choose type of assistant</h2>
+      <div className="grid grid-cols-1 gap-4">
+        {assistantTypes.map((type, index) => (
+          <button
+            key={index}
+            onClick={type.onClick}
+            className="flex flex-col p-6 rounded-lg border hover:border-purple-400 transition-colors text-left space-y-2"
+          >
+            <div className="text-gray-700">
+              {type.icon}
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800">
+              {type.title}
+            </h3>
+            <p className="text-gray-600">
+              {type.description}
+            </p>
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -102,7 +160,9 @@ export const CreateAssistantDialog = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className={`sm:max-w-[${step === "preset" ? "600px" : "900px"}]`}>
-        {step === "initial" ? initialContent : presetContent}
+        {step === "initial" && initialContent}
+        {step === "preset" && presetContent}
+        {step === "type" && typeContent}
       </DialogContent>
     </Dialog>
   );
