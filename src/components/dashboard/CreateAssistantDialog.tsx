@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-const CreateAssistantDialog = () => {
+export const CreateAssistantDialog = () => {
   const [step, setStep] = useState<"initial" | "preset">("initial");
 
   const initialOptions = [
@@ -96,5 +96,3 @@ const CreateAssistantDialog = () => {
     </Dialog>
   );
 };
-
-export default CreateAssistantDialog;
