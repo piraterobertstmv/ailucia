@@ -9,16 +9,20 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CreateAssistantDialog = () => {
   const [step, setStep] = useState<"initial" | "preset">("initial");
+  const navigate = useNavigate();
 
   const initialOptions = [
     {
       icon: <Plus className="w-8 h-8 text-gray-600" />,
       title: "Start from scratch",
       description: "Build your AI Assistant from the ground up",
-      onClick: () => console.log("Start from scratch clicked"),
+      onClick: () => {
+        navigate("/assistants");
+      },
       className: "border-dashed border-2",
     },
     {
@@ -29,6 +33,10 @@ export const CreateAssistantDialog = () => {
       className: "bg-purple-50",
     },
   ];
+
+  const handlePresetSelect = () => {
+    navigate("/assistants");
+  };
 
   const presetContent = (
     <div className="space-y-6">
@@ -42,7 +50,10 @@ export const CreateAssistantDialog = () => {
         </button>
       </div>
       <h2 className="text-2xl font-semibold">Select preset to continue</h2>
-      <div className="border rounded-lg p-6 cursor-pointer hover:border-purple-400 transition-colors">
+      <div 
+        onClick={handlePresetSelect}
+        className="border rounded-lg p-6 cursor-pointer hover:border-purple-400 transition-colors"
+      >
         <div className="inline-block px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm mb-4">
           Inbound
         </div>
