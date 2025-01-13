@@ -1,4 +1,4 @@
-import { Plus, Sparkle, Grid } from "lucide-react";
+import { Plus, Sparkle } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -24,12 +24,6 @@ const CreateAssistantDialog = () => {
       onClick: () => console.log("Quick setup clicked"),
       className: "bg-purple-50",
     },
-    {
-      icon: <Grid className="w-8 h-8 text-gray-600" />,
-      title: "Browse our Templates",
-      description: "Get inspired by our templates to get started",
-      onClick: () => console.log("Templates clicked"),
-    },
   ];
 
   return (
@@ -45,7 +39,7 @@ const CreateAssistantDialog = () => {
             Create New Assistant
           </DialogTitle>
         </DialogHeader>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
           {options.map((option, index) => (
             <button
               key={index}
