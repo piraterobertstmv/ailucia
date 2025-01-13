@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@supabase/auth-helpers-react";
 import { CallStatistics } from "@/components/dashboard/CallStatistics";
+import { CallMetrics } from "@/components/dashboard/CallMetrics";
 import { BusinessProfileForm } from "@/components/dashboard/BusinessProfileForm";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
@@ -34,28 +35,27 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto py-4 px-4">
-      <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-6 gap-4">
-        <div className="flex items-center justify-center w-full sm:w-auto">
-          <Button
-            onClick={() => navigate("/pricing")}
-            className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
-          >
-            Back to Pricing
-          </Button>
-        </div>
-        {businessProfile && (
-          <div className="flex items-center gap-2">
-            <span className="text-gray-600">Current Plan:</span>
-            <Link to="/pricing">
-              <span className="font-semibold text-secondary capitalize hover:underline cursor-pointer">
-                {businessProfile.plan_type}
-              </span>
-            </Link>
-          </div>
-        )}
+      <div className="flex justify-center mb-6">
+        <Button
+          onClick={() => navigate("/pricing")}
+          className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
+        >
+          Back to Pricing
+        </Button>
       </div>
+      {businessProfile && (
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <span className="text-gray-600">Current Plan:</span>
+          <Link to="/pricing">
+            <span className="font-semibold text-secondary capitalize hover:underline cursor-pointer">
+              {businessProfile.plan_type}
+            </span>
+          </Link>
+        </div>
+      )}
       <div className="space-y-8">
         <CallStatistics />
+        <CallMetrics />
         <BusinessProfileForm />
       </div>
     </div>
