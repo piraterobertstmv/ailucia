@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "@/pages/Index";
 import Dashboard from "@/pages/Dashboard";
 import PricingPage from "@/pages/PricingPage";
+import AssistantsPage from "@/pages/AssistantsPage";
 import "./App.css";
 
 function AppRoutes() {
@@ -20,6 +21,10 @@ function AppRoutes() {
       <Route 
         path="/pricing" 
         element={session ? <PricingPage /> : <Navigate to="/" />} 
+      />
+      <Route 
+        path="/assistants" 
+        element={session ? <AssistantsPage /> : <Navigate to="/" />} 
       />
     </Routes>
   );
