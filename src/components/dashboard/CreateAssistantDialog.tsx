@@ -1,4 +1,4 @@
-import { ArrowLeft, Plus, Sparkle, X } from "lucide-react";
+import { ArrowLeft, Plus, Sparkle } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -32,7 +32,7 @@ const CreateAssistantDialog = () => {
 
   const presetContent = (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center">
         <button
           onClick={() => setStep("initial")}
           className="flex items-center text-gray-600 hover:text-gray-800"
@@ -40,9 +40,6 @@ const CreateAssistantDialog = () => {
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back
         </button>
-        <DialogClose className="rounded-full p-2 hover:bg-gray-100">
-          <X className="w-5 h-5" />
-        </DialogClose>
       </div>
       <h2 className="text-2xl font-semibold">Select preset to continue</h2>
       <div className="border rounded-lg p-6 cursor-pointer hover:border-purple-400 transition-colors">
