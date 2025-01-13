@@ -5,13 +5,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateAssistantDialog = () => {
   const [step, setStep] = useState<"initial" | "preset">("initial");
+  const navigate = useNavigate();
 
   const initialOptions = [
     {
@@ -30,6 +31,10 @@ const CreateAssistantDialog = () => {
     },
   ];
 
+  const handlePresetClick = () => {
+    navigate("/dashboard/assistant/settings");
+  };
+
   const presetContent = (
     <div className="space-y-6">
       <div className="flex items-center">
@@ -42,7 +47,10 @@ const CreateAssistantDialog = () => {
         </button>
       </div>
       <h2 className="text-2xl font-semibold">Select preset to continue</h2>
-      <div className="border rounded-lg p-6 cursor-pointer hover:border-purple-400 transition-colors">
+      <div 
+        className="border rounded-lg p-6 cursor-pointer hover:border-purple-400 transition-colors"
+        onClick={handlePresetClick}
+      >
         <div className="inline-block px-3 py-1 rounded-full bg-gray-100 text-gray-700 text-sm mb-4">
           Inbound
         </div>
