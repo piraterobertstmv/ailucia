@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
+import CreateAssistantDialog from "@/components/dashboard/CreateAssistantDialog";
 
 const Dashboard = () => {
   const session = useSession();
@@ -35,13 +36,14 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto py-4 px-4">
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-between items-center mb-6">
         <Button
           onClick={() => navigate("/pricing")}
           className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
         >
           Back to Pricing
         </Button>
+        <CreateAssistantDialog />
       </div>
       {businessProfile && (
         <div className="flex items-center justify-center gap-2 mb-6">
