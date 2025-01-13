@@ -48,7 +48,7 @@ const CreateAssistantDialog = () => {
         </div>
         <h3 className="text-xl font-semibold mb-2">Inbound Receptionist</h3>
         <p className="text-gray-600">
-          Welcome and assist visitors with ease. The AI receptionist handles all inbound communication.
+          Welcome and assist visitors with ease. Luc-ia handles all inbound communication.
         </p>
       </div>
     </div>
