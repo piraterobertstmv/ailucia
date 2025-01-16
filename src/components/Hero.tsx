@@ -13,6 +13,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Hero = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const heroTextRef = useScrollAnimation();
   const heroImageRef = useScrollAnimation();
 
@@ -63,9 +64,26 @@ export const Hero = () => {
                   />
                 </DialogContent>
               </Dialog>
-              <Button className="w-full sm:w-auto bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(155,135,245,0.3)]">
-                Watch Demo
-              </Button>
+              <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+                <DialogTrigger asChild>
+                  <Button className="w-full sm:w-auto bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(155,135,245,0.3)]">
+                    Watch Demo
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[640px] p-0">
+                  <div className="aspect-video">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/hgtB7Uy6amA"
+                      title="Luc-ia Demo Video"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="rounded-lg"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           <div 
