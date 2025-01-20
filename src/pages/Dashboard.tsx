@@ -34,11 +34,16 @@ const Dashboard = () => {
     return null;
   }
 
+  const handleNavigateToPricing = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/pricing");
+  };
+
   return (
     <div className="container mx-auto py-4 px-4">
       <div className="flex justify-between items-center mb-6">
         <Button
-          onClick={() => navigate("/pricing")}
+          onClick={handleNavigateToPricing}
           className="bg-white hover:bg-[#9b87f5] text-[#9b87f5] hover:text-white border border-[#9b87f5] transition-colors"
         >
           Back to Pricing
