@@ -17,18 +17,30 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 
 export const CallHistoryChart = () => {
   const session = useSession();
 
-  const { data: callStats } = useQuery({
+  const { data: callStats, error } = useQuery({
     queryKey: ["callStats", session?.user?.id],
     queryFn: async () => {
-      const { data } = await supabase
+      console.log("Fetching call stats for user:", session?.user?.id);
+      const { data, error: supabaseError } = await supabase
         .from("call_statistics")
         .select("*")
         .eq("user_id", session?.user?.id)
         .order("call_date", { ascending: true });
+
+      if (supabaseError) {
+        console.error("Supabase error:", supabaseError);
+        throw supabaseError;
+      }
+
+      console.log("Received call stats:", data);
       return data || [];
     },
     enabled: !!session?.user?.id,
   });
+
+  if (error) {
+    console.error("Query error:", error);
+  }
 
   return (
     <Card>
